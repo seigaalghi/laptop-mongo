@@ -32,4 +32,4 @@ function swap(arr, i, j) {
   arr[j] = temp;
 }
 
-console.log(quickSort([11, 8, 14, 3, 6, 2, 7], 0, 6)); //[2, 3, 6, 7, 8, 11, 14]
+console.log(quickSort([11, 8, 14, 3, 6, 2, 7], 0, 6)); // [2, 3, 6, 7, 8, 11, 14]
