@@ -3,7 +3,7 @@
 let angka = 10
 
 function hitungMundur(){
-    let arr = ["a", "b", "c", "d", 5, 4]
+    let arr = [1, 2, 3, "d", 5, 4]
     let index = 0
 
     while( index < arr.length ){

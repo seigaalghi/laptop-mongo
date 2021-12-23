@@ -42,3 +42,27 @@ console.log(pesawat.namaPilot[1].nama);
 
 // sebuah object memiliki property (menyimpan nilai) dan method (menyimpan function)
 // property terdiri atas key (nama) dan value (nilai)
+
+
+const obj1 = [
+  {
+    name : "Seiga",
+    job : "Developer",
+    type : "Full stack Developer"
+  },
+  {
+    name : "Seiga",
+    job : "Developer",
+    type : "Full stack Developer"
+  },
+  {
+    name : "Seiga",
+    job : "Developer",
+    type : "Full stack Developer"
+  },
+  {
+    name : "Seiga",
+    job : "Developer",
+    type : "Full stack Developer"
+  }
+]
