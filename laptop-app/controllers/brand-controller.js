@@ -41,6 +41,7 @@ const brandController = {
     }
   },
   getBrands: async (req, res) => {
+    console.log(req.user)
     try {
       const brands = await Brand.findAll({
         limit: 10,
