@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 module.exports = () => {
   mongoose.connect(
-    "mongodb+srv://admin:admin@cluster0.l4eoe.mongodb.net/laptopDB?retryWrites=true&w=majority",
+    process.env.MONGO_URI,
     {},
     (error) => {
       if (error) {
