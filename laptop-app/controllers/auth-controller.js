@@ -116,5 +116,5 @@ module.exports = {
     } catch (error) {
       catchHandler(res, error);
     }
-  },
+  }
 };

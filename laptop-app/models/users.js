@@ -9,12 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Users.hasOne(models.Profile, { as: "profile", foreignKey: "userId" });
+      Users.belongsToMany(models.Laptop, { as: "likedLaptops", through: "LaptopLike" });
     }
   }
   Users.init(
     {
       name: DataTypes.STRING,
-      isAdmin : DataTypes.BOOLEAN,
+      isAdmin: DataTypes.BOOLEAN,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
     },

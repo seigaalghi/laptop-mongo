@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const { Brand } = require("../models");
+const { Brand, Laptop } = require("../models");
 const catchHandler = require("../utils/catch-handler");
 
 const brandController = {
@@ -41,11 +41,17 @@ const brandController = {
     }
   },
   getBrands: async (req, res) => {
-    console.log(req.user)
     try {
       const brands = await Brand.findAll({
         limit: 10,
         order: [["createdAt", "DESC"]],
+        include : [
+          {
+            model : Laptop,
+            as : "laptops",
+            attributes : ["name", "price", "stock"]
+          }
+        ]
       });
       if (brands.length == 0) {
         return res.status(404).json({
@@ -115,8 +121,8 @@ const brandController = {
       });
 
       if (checkUpdate[0] != 1) {
-        return res.status(500).json({
-          status: "Internal Server Error",
+        return res.status(404).json({
+          status: "Not Found",
           message: "Failed to update the data / data not found",
           result: {},
         });

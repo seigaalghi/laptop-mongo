@@ -1,5 +1,5 @@
 const catchHandler = require("../utils/catch-handler");
-const multer = require('multer')
+const multer = require("multer");
 
 module.exports = {
   uploadLocal: (fieldName) => {
@@ -25,4 +25,5 @@ module.exports = {
       });
     };
   },
+  uploadCloud: () => {},
 };

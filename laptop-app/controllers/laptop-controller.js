@@ -1,6 +1,6 @@
 const Joi = require("joi");
 const catchHandler = require("../utils/catch-handler");
-const { Laptop } = require("../models");
+const { Laptop, Brand, Users } = require("../models");
 
 module.exports = {
   createLaptop: async (req, res) => {
@@ -42,6 +42,46 @@ module.exports = {
         status: "success",
         message: "Successfuly created laptop",
         result: laptop,
+      });
+    } catch (error) {
+      catchHandler(res, error);
+    }
+  },
+  getLaptops: async (req, res) => {
+    try {
+      const laptops = await Laptop.findAll({
+        limit: 10,
+        include: [
+          {
+            model: Brand,
+            as: "brand",
+            attributes: {
+              exclude: ["updatedAt", "createdAt"],
+            },
+          },
+          {
+            model: Users,
+            as: "likes",
+            attributes: {
+              exclude: ["password"],
+            },
+          },
+        ],
+        attributes: {
+          exclude: ["brandId", "updatedAt", "createdAt"],
+        },
+      });
+      if (laptops.length == 0) {
+        return res.status(404).json({
+          status: "Not Found",
+          message: "Database is empty, data not found",
+          result: [],
+        });
+      }
+      res.status(200).json({
+        status: "success",
+        message: "Successfuly retrieve laptops",
+        result: laptops,
       });
     } catch (error) {
       catchHandler(res, error);
